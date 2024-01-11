@@ -1,32 +1,17 @@
-# Prerequisites
-*.d
+# Build output directories
+bazel-*
+out
 
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
+# VS Code
+*.code-workspace
 
-# Precompiled Headers
-*.gch
-*.pch
+# Pigweed
+.environment/
+environment/
+out/
+.pw_ide
+build_overrides/pigweed_environment.gni
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
-*.exe
-*.out
-*.app
+# Tools
+*.pyc
+__pycache__/
