@@ -1,7 +1,7 @@
 # cirque
 * learning project with multiple goals:
-    * creating embedded projects using pigweed to:
-        * bootstrap our build environment based on the bazel build system
+    * creating embedded projects using pigweed (https://pigweed.dev/) to:
+        * bootstrap our build environment based on the bazel build system (https://bazel.build/)
             * makes it reproduceable in the future or on new build machines
             * cross platform capability
         * simplifies the integration of static analysis tools
@@ -11,9 +11,9 @@
     * a study of modern control theory
         * state space design methods
         * Kalman filters
+        * balance a ball on a table
 
-
-# how we set up the environment with
+# how we set up the pigweed environment
 * prerequisites:
     * python virtual environments: > sudo apt install python3.10-venv
 * created a third_party directory
