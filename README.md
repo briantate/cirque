@@ -12,6 +12,7 @@
         * state space design methods
         * Kalman filters
         * balance a ball on a table
+    * Study the benefits/drawbacks of C++ in embedded systems
 
 # how we set up the pigweed environment
 * prerequisites:
