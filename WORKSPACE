@@ -6,10 +6,10 @@ load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
 http_archive(
     name = "platforms",
-    sha256 = "5308fc1d8865406a49427ba24a9ab53087f17f5266a7aabbfc28823f3916e1ca",
+    sha256 = "8150406605389ececb6da07cbcb509d5637a3ab9a24bc69b1101531367d89d74",
     urls = [
-        "https://mirror.bazel.build/github.com/bazelbuild/platforms/releases/download/0.0.6/platforms-0.0.6.tar.gz",
-        "https://github.com/bazelbuild/platforms/releases/download/0.0.6/platforms-0.0.6.tar.gz",
+        "https://mirror.bazel.build/github.com/bazelbuild/platforms/releases/download/0.0.8/platforms-0.0.8.tar.gz",
+        "https://github.com/bazelbuild/platforms/releases/download/0.0.8/platforms-0.0.8.tar.gz",
     ],
 )
 
@@ -83,57 +83,23 @@ local_repository(
     path = "third_party/pigweed/pw_toolchain_bazel",
 )
 
-
 load(
     "@pigweed//pw_env_setup/bazel/cipd_setup:cipd_rules.bzl",
     "cipd_client_repository",
     "cipd_repository",
-    "pigweed_deps",
 )
-
-pigweed_deps()
-
-load("@cipd_deps//:cipd_init.bzl", "cipd_init")
-
-cipd_init()
 
 cipd_client_repository()
 
-load("@pw_toolchain//features/macos:generate_xcode_repository.bzl", "pw_xcode_command_line_tools_repository")
+load("@pigweed//pw_toolchain:register_toolchains.bzl", "register_pigweed_cxx_toolchains")
 
-pw_xcode_command_line_tools_repository()
+register_pigweed_cxx_toolchains()
 
 # Get the OpenOCD binary (we'll use it for flashing).
 cipd_repository(
     name = "openocd",
     path = "infra/3pp/tools/openocd/${os}-${arch}",
     tag = "version:2@0.11.0-3",
-)
-
-# Fetch llvm toolchain.
-cipd_repository(
-    name = "llvm_toolchain",
-    path = "fuchsia/third_party/clang/${os}-${arch}",
-    tag = "git_revision:8475d0a2b853f6184948b428ec679edf84ed2688",
-)
-
-# Fetch linux sysroot for host builds.
-cipd_repository(
-    name = "linux_sysroot",
-    path = "fuchsia/third_party/sysroot/linux",
-    tag = "git_revision:d342388843734b6c5c50fb7e18cd3a76476b93aa",
-)
-
-# Fetch gcc-arm-none-eabi toolchain.
-cipd_repository(
-    name = "gcc_arm_none_eabi_toolchain",
-    path = "fuchsia/third_party/armgcc/${os}-${arch}",
-    tag = "version:2@12.2.mpacbti-rel1.1",
-)
-
-register_toolchains(
-    "@pigweed//pw_toolchain/host_clang:host_cc_toolchain_linux",
-    "@pigweed//pw_toolchain/arm_gcc:arm_gcc_cc_toolchain_cortex-m4",
 )
 
 load("@rules_python//python:repositories.bzl", "python_register_toolchains")

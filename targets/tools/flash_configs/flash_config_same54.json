@@ -1,0 +1,7 @@
+{
+    "BINARY_PATH": "demo_uart/app.elf",
+    "OPENOCD_PATH": "openocd/bin/openocd",
+    "OPENOCD_CONFIG_PATH": "openocd/scripts/board/microchip_same54_xplained_pro.cfg",
+    "TARGET_VENDOR_ID": "0x03eb",
+    "TARGET_PRODUCT_ID": "0x2111"
+}

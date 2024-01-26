@@ -3,11 +3,15 @@ load("@rules_python//python:defs.bzl", "py_binary")
 package(default_visibility = ["//visibility:public"])
 
 py_binary(
-    name = "flash",
+    name = "flash_same54",
+    main = "flash.py",
     srcs = ["flash.py"],
+    # There might be a better way to indicate this file to the python script
+    args = [ "--file demo_uart/targets/tools/flash_configs/flash_config_same54.json" ],
     data = [
         "//:app.elf",
         "@openocd//:all",
+        "flash_configs/flash_config_same54.json",
     ],
     deps = [
         "@pypi_pyserial//:pkg",

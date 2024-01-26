@@ -39,6 +39,7 @@ pw_create_python_source_tree("generate_project_tools_python_package") {
     version = "0.0.1"
     append_date_to_version = true
   }
+  extra_files = [ "//tools/pigweed/pyproject.toml > pyproject.toml" ]
 }
 
 pw_internal_pip_install("pip_install_project_packages") {

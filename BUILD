@@ -8,6 +8,7 @@ device_cc_binary(
     binary = "//src:device_application",
 )
 
+# This target is currently not funcitoning and is set as a placeholder.
 cc_binary(
     name = "host_build",
     deps = ["//src:main"],

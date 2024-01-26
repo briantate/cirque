@@ -4,6 +4,7 @@ out
 
 # VS Code
 *.code-workspace
+.vscode
 
 # Pigweed
 .environment/
